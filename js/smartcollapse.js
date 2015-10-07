@@ -41,7 +41,9 @@ function removeChars(targetDiv, numberOfChars, delay) {
     if (targetDiv.text().length !== undefined) {
         if (targetDiv.text().length > 0) {
 
-            setTimeout(function () {
+            setTimeout(repeatAdd, delay);
+
+            function repeatAdd() {
                 var tempText = "";
                 tempText = targetDiv.text();
                 tempText = tempText.slice(0, tempText.length - numberOfChars);
@@ -49,7 +51,7 @@ function removeChars(targetDiv, numberOfChars, delay) {
 
                 removeChars(targetDiv, numberOfChars, delay);
 
-            }, delay);
+            }
 
         }
 
