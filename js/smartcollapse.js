@@ -15,24 +15,20 @@ function addChars(targetDiv, numberOfChars, delay, defaultText) {
     var finalText = "";
     finalText = defaultText;
 
-    var initialLength = 0
-    initialLength = targetDiv.text().length != undefined ? targetDiv.text().length : 0
+    var initialLength = 0;
+    initialLength = targetDiv.text().length !== undefined ? targetDiv.text().length : 0;
 
     if (initialLength <= finalText.length) {
 
-        setTimeout(repeatRemove, delay);
-
-        function repeatRemove() {
-            var tempText = ""
+        setTimeout(function () {
+            var tempText = "";
 
             tempText = finalText.slice(0, targetDiv.text().length + numberOfChars);
             targetDiv.html(tempText);
 
             addChars(targetDiv, numberOfChars, delay, defaultText);
-
-        };
-
-    };
+        }, delay);
+    }
 
 }
 
@@ -41,9 +37,7 @@ function removeChars(targetDiv, numberOfChars, delay) {
     if (targetDiv.text().length !== undefined) {
         if (targetDiv.text().length > 0) {
 
-            setTimeout(repeatAdd, delay);
-
-            function repeatAdd() {
+            setTimeout(function () {
                 var tempText = "";
                 tempText = targetDiv.text();
                 tempText = tempText.slice(0, tempText.length - numberOfChars);
@@ -51,9 +45,7 @@ function removeChars(targetDiv, numberOfChars, delay) {
 
                 removeChars(targetDiv, numberOfChars, delay);
 
-            }
-
+            }, delay);
         }
-
     }
 }
